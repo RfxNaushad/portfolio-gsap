@@ -3,7 +3,7 @@ function WhatWeDo() {
         <div className="bg-black py-16 px-4 md:px-8 lg:px-12">
             <div className="max-w-[1120px] mx-auto">
                 {/* Section Heading */}
-                <div className="text-start mb-12">
+                <div className="text-start mb-12 space-y-6">
                     <p className="text-gray-400 uppercase text-sm tracking-widest">
                         Service Offerings
                     </p>
@@ -20,10 +20,10 @@ function WhatWeDo() {
                 {/* Cards Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {/* Card 1 */}
-                    <div className="bg-gray-800 rounded-lg p-6">
+                    <div className="bg-[#484848] rounded-2xl p-6">
                         <div className="mb-4">
                             <img
-                                src="/path-to-icon" // replace with the actual icon path
+                                src="/code.png" // replace with the actual icon path
                                 alt="Frontend & Backend Development"
                                 className="w-10 h-10"
                             />
@@ -45,10 +45,10 @@ function WhatWeDo() {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="bg-gray-800 rounded-lg p-6">
+                    <div className="bg-[#484848] rounded-2xl p-6">
                         <div className="mb-4">
                             <img
-                                src="/path-to-icon"
+                                src="/code.png"
                                 alt="DevOps & Deployment"
                                 className="w-10 h-10"
                             />
@@ -69,10 +69,10 @@ function WhatWeDo() {
                     </div>
 
                     {/* Card 3 */}
-                    <div className="bg-gray-800 rounded-lg p-6">
+                    <div className="bg-[#484848] rounded-2xl p-6">
                         <div className="mb-4">
                             <img
-                                src="/path-to-icon"
+                                src="/code.png"
                                 alt="API Integration"
                                 className="w-10 h-10"
                             />
@@ -93,10 +93,10 @@ function WhatWeDo() {
                     </div>
 
                     {/* Card 4 */}
-                    <div className="bg-gray-800 rounded-lg p-6">
+                    <div className="bg-[#484848] rounded-2xl p-6">
                         <div className="mb-4">
                             <img
-                                src="/path-to-icon"
+                                src="/code.png"
                                 alt="Database Optimization"
                                 className="w-10 h-10"
                             />

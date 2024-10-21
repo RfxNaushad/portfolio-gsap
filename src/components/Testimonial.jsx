@@ -108,7 +108,7 @@ const testimonials = [
         role: "Ngeni Lab director",
         subRole: "Lead Developer",
         quote: "Nafiur transformed our projects with reliable, user-friendly solutions. Highly recommend!",
-        avatar: "/public/testimonial_avatar1.png",
+        avatar: "/testimonial_avatar1.png",
     },
     {
         id: 2,
@@ -116,7 +116,7 @@ const testimonials = [
         role: "Tech Innovators CEO",
         subRole: "Product Strategist",
         quote: "Working with Nafiur has been a game-changer for our company. Their solutions are top-notch!",
-        avatar: "/public/testimonial_avatar2.png",
+        avatar: "/testimonial_avatar2.png",
     },
     {
         id: 3,
@@ -124,7 +124,7 @@ const testimonials = [
         role: "StartUp Ventures Founder",
         subRole: "Software Architect",
         quote: "Nafiur's expertise in creating scalable solutions has been invaluable to our growth.",
-        avatar: "/public/testimonial_avatar3.png",
+        avatar: "/testimonial_avatar3.png",
     },
 ];
 

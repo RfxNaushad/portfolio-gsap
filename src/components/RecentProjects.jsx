@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ArrowUpRight, Github } from "lucide-react";
 import { useState } from "react";
 
@@ -5,7 +6,7 @@ const projects = [
     {
         id: 1,
         title: "E-Commerce Website name",
-        image: "/public/recent_project1.png",
+        image: "/recent_project1.png",
         category: "React JS",
         technologies: [
             "React",
@@ -19,7 +20,7 @@ const projects = [
     {
         id: 2,
         title: "Social Media App",
-        image: "/public/recent_project2.png",
+        image: "/recent_project2.png",
         category: "React JS",
         technologies: [
             "React",
@@ -33,7 +34,7 @@ const projects = [
     {
         id: 3,
         title: "Weather Forecast App",
-        image: "/public/recent_project3.png",
+        image: "/recent_project3.png",
         category: "React JS",
         technologies: [
             "React",
@@ -47,7 +48,7 @@ const projects = [
     {
         id: 4,
         title: "Personal Portfolio Website",
-        image: "/public/recent_project4.png",
+        image: "/recent_project4.png",
         category: "React JS",
         technologies: [
             "React",
@@ -64,22 +65,22 @@ const ProjectCard = ({ project, isWide }) => (
     <div
         className={`flex flex-col justify-end w-full h-[30.3rem] object-cover  rounded-3xl overflow-hidden ${
             isWide ? "col-span-7" : "col-span-5"
-        // eslint-disable-next-line react/prop-types
-        } bg-cover  bg-no-repeat ` } style={{ backgroundImage: `url(${project.image})` }} >
-
-    {/* <div className="absolute inset-0 bg-black bg-opacity-90"></div> */}
+        } bg-cover  bg-no-repeat `}
+        style={{ backgroundImage: `url(${project.image})` }}
+    >
+        {/* <div className="absolute inset-0 bg-black bg-opacity-90"></div> */}
         {/* <img
             src={project.image}
             alt={project.title}
             className="w-full h-64 object-cover"
         /> */}
         <div className="flex items-center gap-4 p-6 ">
-                <button className="bg-white text-black px-4 py-2 rounded-full flex items-center text-sm font-medium">
-                    View Project <ArrowUpRight className="ml-2 w-4 h-4" />
-                </button>
-                <button className="bg-green-400 p-2 rounded-full">
-                    <Github className="w-5 h-5 text-black" />
-                </button>
+            <button className="bg-white text-black px-4 py-2 rounded-full flex items-center text-sm font-medium">
+                View Project <ArrowUpRight className="ml-2 w-4 h-4" />
+            </button>
+            <button className="bg-green-400 p-2 rounded-full">
+                <Github className="w-5 h-5 text-black" />
+            </button>
         </div>
 
         <div className="p-6 bg-black opacity-90 ">
@@ -90,7 +91,7 @@ const ProjectCard = ({ project, isWide }) => (
                 {project.technologies.map((tech, index) => (
                     <span
                         key={index}
-                        className="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full"
+                        className="border-2 border-gray-700 text-gray-300 text-xs px-3 py-2 rounded-full"
                     >
                         {tech}
                     </span>

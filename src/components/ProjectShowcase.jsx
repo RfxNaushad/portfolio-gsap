@@ -232,12 +232,12 @@ export default function ProjectShowcase() {
     const containerRef = useRef(null);
 
     const projects = [
-        { id: 1, title: "Weather app", image: "/public/project1.png" },
-        { id: 2, title: "Landing page", image: "/public/project2.jpeg" },
-        { id: 3, title: "B2B App", image: "/public/project3.png" },
-        { id: 4, title: "E-commerce", image: "/public/project2.jpeg" },
-        { id: 5, title: "Marketing", image: "/public/project2.jpeg" },
-        { id: 6, title: "Portfolio Website", image: "/public/project2.jpeg" },
+        { id: 1, title: "Weather app", image: "/project1.png" },
+        { id: 2, title: "Landing page", image: "/project2.jpeg" },
+        { id: 3, title: "B2B App", image: "/project3.png" },
+        { id: 4, title: "E-commerce", image: "/project2.jpeg" },
+        { id: 5, title: "Marketing", image: "/project2.jpeg" },
+        { id: 6, title: "Portfolio Website", image: "/project2.jpeg" },
     ];
 
     // useEffect(() => {

@@ -5,8 +5,10 @@ import Hero from "../components/Hero";
 import ProjectShowcase from "../components/ProjectShowcase";
 import RecentProjects from "../components/RecentProjects";
 import Testimonial from "../components/Testimonial";
-import WhatWeDo from "../components/WhatWeDo";
+import WhatIDo from "../components/WhatIDo";
 import WorkExperience from "../components/WorkExperience";
+import TextEffects from "../components/TextEffects";
+
 
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -84,7 +86,8 @@ function MainPage() {
 
             <Hero />
             <About />
-            <WhatWeDo />
+            {/* <WhatWeDo /> */}
+            <WhatIDo />
             <RecentProjects />
             <WorkExperience />
             <Testimonial />

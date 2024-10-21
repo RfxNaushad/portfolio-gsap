@@ -8,7 +8,7 @@ import "../App.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
+const TextEffects = () => {
   useEffect(() => {
     // Create a timeline for sequential animation
     const timeline = gsap.timeline({
@@ -112,4 +112,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default TextEffects;
