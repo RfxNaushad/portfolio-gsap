@@ -10,10 +10,6 @@ import WorkExperience from "../components/WorkExperience";
 import TextMarquee from "../components/TextMarquee";
 
 
-
-
-
-
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
 

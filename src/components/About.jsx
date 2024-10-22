@@ -79,8 +79,8 @@ const About = () => {
 
             <span
               className="reveal-type"
-              data-bg-color="gray"   // Initially gray
-              data-fg-color="white"  // Reveals to white for the rest
+              data-bg-color="gray"  
+              data-fg-color="white"  
             >
               I'm a{" "}
             </span>
