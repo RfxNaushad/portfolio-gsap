@@ -225,10 +225,9 @@ export default function Testimonial() {
 
     //    current version
     useEffect(() => {
-        // Initialize Lenis for smooth scrolling
         const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => t, // linear easing
+            duration: 1,
+            easing: (t) => t,
         });
         
         function raf(time) {
@@ -237,12 +236,6 @@ export default function Testimonial() {
         }
         
         requestAnimationFrame(raf);
-
-        return () => {
-            lenis.destroy(); // Cleanup on unmount
-        };
-    }, []);
-    useEffect(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.author',
@@ -302,6 +295,7 @@ export default function Testimonial() {
     
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            lenis.destroy();
         };
     }, []);
     
