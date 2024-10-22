@@ -1,115 +1,122 @@
-import React, { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import SplitType from "split-type";
-import Lenis from "@studio-freight/lenis";
 
-import "../App.css";
+// import '../App.css'
+// import React, { useEffect } from "react";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/all";
+// import SplitType from "split-type";
+// import Lenis from "@studio-freight/lenis";
 
-gsap.registerPlugin(ScrollTrigger);
+// import "../App.css";
 
-const TextEffects = () => {
-  useEffect(() => {
-    // Create a timeline for sequential animation
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".text-effects",
-        start: "top 80%",
-        end: "top 20%",
-        scrub: true,
-        markers: false,
-      }
-    });
+// gsap.registerPlugin(ScrollTrigger);
 
-    // Select all reveal-type elements
-    const splitTypes = document.querySelectorAll(".reveal-type");
+// const About = () => {
+//   useEffect(() => {
+//     // Create a timeline for hard color reveal
+//     const timeline = gsap.timeline({
+//       scrollTrigger: {
+//         trigger: ".text-effects",
+//         start: "top 80%",
+//         end: "top 20%",
+//         scrub: true,
+//         markers: false,
+//       }
+//     });
 
-    splitTypes.forEach((char) => {
-      const bg = char.dataset.bgColor;
-      const fg = char.dataset.fgColor;
+//     // Select all reveal-type elements
+//     const splitTypes = document.querySelectorAll(".reveal-type");
 
-      const text = new SplitType(char, { types: "chars" });
+//     splitTypes.forEach((char) => {
+//       const bg = char.dataset.bgColor; // Background color (initial)
+//       const fg = char.dataset.fgColor; // Foreground color (final)
 
-      // Add each text section to the timeline for sequential animation
-      timeline.fromTo(
-        text.chars,
-        { color: bg }, // Start color (gray)
-        {
-          color: fg, // End color (white or green for full-stack developer)
-          duration: 0.3,
-          stagger: 0.02,
-        },
-        "+=0.5" // Delay between the animations (adjust for pacing)
-      );
-    });
+//       // Use SplitType to split the text into individual characters
+//       const text = new SplitType(char, { types: "chars" });
 
-    // Smooth scrolling using Lenis
-    const lenis = new Lenis();
+//       // Hard color reveal with no easing and short duration
+//       timeline.fromTo(
+//         text.chars,  // Target individual characters
+//         { color: bg }, // Starting color
+//         {
+//           color: fg, // Final color
+//           duration: 0.1, // Short duration for a sharp change
+//           stagger: 0.05, // Stagger for one-by-one effect
+//           ease: "none",  // No easing for a hard transition
+//         },
+//         "+=0.01" // Delay between animations
+//       );
+//     });
 
-    lenis.on("scroll", (e) => {
-      console.log(e);
-    });
+//     // Smooth scrolling using Lenis
+//     const lenis = new Lenis();
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+//     lenis.on("scroll", (e) => {
+//       console.log(e);
+//     });
 
-    requestAnimationFrame(raf);
+//     function raf(time) {
+//       lenis.raf(time);
+//       requestAnimationFrame(raf);
+//     }
 
-    // Clean up GSAP ScrollTrigger on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+//     requestAnimationFrame(raf);
 
-  return (
-    <div className="bg-black px-6 py-16 md:px-12 md:py-24">
-      <div className="max-w-[1120px] mx-auto">
-        <p className="text-sm text-gray-400 tracking-widest uppercase mb-4">
-          About Me
-        </p>
+//     // Clean up GSAP ScrollTrigger on unmount
+//     return () => {
+//       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+//     };
+//   }, []);
 
-        <div className="text-effects">
-          <h1 className="text text-4xl md:text-[4.25rem] font-bold leading-tight">
+//   return (
+//     <div className="bg-black px-6 py-16 md:px-12 md:py-24">
+//       <div className="max-w-[1120px] mx-auto">
+//         <p className="text-sm text-gray-400 tracking-widest uppercase mb-4">
+//           About Me
+//         </p>
 
-            <span
-              className="reveal-type"
-              data-bg-color="gray"   // Initially gray
-              data-fg-color="white"  // Reveals to white for the rest
-            >
-              I'm a{" "}
-            </span>
+//         <div className="text-effects">
+//           <h1 className="text text-4xl md:text-[4.25rem] font-bold leading-tight">
 
-            <span
-              className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="#22C55E" 
-            >
-              full-stack developer{" "}
-            </span>
+//             <span
+//               className="reveal-type"
+//               data-bg-color="gray"   // Initially gray
+//               data-fg-color="white"  // Reveals to white for the rest
+//             >
+//               I'm a{" "}
+//             </span>
 
-            <span
-              className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="white"  
-            >
-              focused on building quality and impactful digital solutions across front-end{" "} and{" "}
-            </span> 
+//             <span
+//               className="reveal-type"
+//               data-bg-color="gray"   
+//               data-fg-color="#22C55E" 
+//             >
+//               full-stack developer{" "}
+//             </span>
 
-            <span
-              className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="gray"  
-            >
-              back-end.
-            </span>
+//             <span
+//               className="reveal-type"
+//               data-bg-color="gray"   
+//               data-fg-color="white"  
+//             >
+//               focused on building quality and impactful digital solutions across front-end{" "} and{" "}
+//             </span> 
 
-          </h1>
-        </div>
-      </div>
-    </div>
-  );
-};
+//             <span
+//               className="reveal-type"
+//               data-bg-color="gray"   
+//               data-fg-color="white"  
+//             >
+//               back-end.
+//             </span>
 
-export default TextEffects;
+//           </h1>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default About;
+
+
+

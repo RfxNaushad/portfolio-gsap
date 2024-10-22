@@ -7,7 +7,7 @@ import RecentProjects from "../components/RecentProjects";
 import Testimonial from "../components/Testimonial";
 import WhatIDo from "../components/WhatIDo";
 import WorkExperience from "../components/WorkExperience";
-import TextEffects from "../components/TextEffects";
+import TextMarquee from "../components/TextMarquee";
 
 
 function MainPage() {
@@ -85,6 +85,7 @@ function MainPage() {
             </nav>
 
             <Hero />
+            <TextMarquee />
             <About />
             {/* <WhatWeDo /> */}
             <WhatIDo />
@@ -93,6 +94,7 @@ function MainPage() {
             <Testimonial />
             <ProjectShowcase />
             <Footer />
+
         </div>
     );
 }

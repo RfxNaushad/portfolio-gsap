@@ -1,3 +1,5 @@
+
+import '../App.css'
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -10,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   useEffect(() => {
-    // Create a timeline for sequential animation
+    // Create a timeline for hard color reveal
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".text-effects",
@@ -25,21 +27,23 @@ const About = () => {
     const splitTypes = document.querySelectorAll(".reveal-type");
 
     splitTypes.forEach((char) => {
-      const bg = char.dataset.bgColor;
-      const fg = char.dataset.fgColor;
+      const bg = char.dataset.bgColor; // Background color (initial)
+      const fg = char.dataset.fgColor; // Foreground color (final)
 
+      // Use SplitType to split the text into individual characters
       const text = new SplitType(char, { types: "chars" });
 
-      // Add each text section to the timeline for sequential animation
+      // Hard color reveal with no easing and short duration
       timeline.fromTo(
-        text.chars,
-        { color: bg }, // Start color (gray)
+        text.chars,  // Target individual characters
+        { color: bg }, // Starting color
         {
-          color: fg, // End color (white or green for full-stack developer)
-          duration: 0.3,
-          stagger: 0.02,
+          color: fg, // Final color
+          duration: 0.1, // Short duration for a sharp change
+          stagger: 0.05, // Stagger for one-by-one effect
+          ease: "none",  // No easing for a hard transition
         },
-        "+=0.5" // Delay between the animations (adjust for pacing)
+        "+=0.01" // Delay between animations
       );
     });
 
@@ -75,8 +79,8 @@ const About = () => {
 
             <span
               className="reveal-type"
-              data-bg-color="gray"   // Initially gray
-              data-fg-color="white"  // Reveals to white for the rest
+              data-bg-color="gray"  
+              data-fg-color="white"  
             >
               I'm a{" "}
             </span>
@@ -100,7 +104,7 @@ const About = () => {
             <span
               className="reveal-type"
               data-bg-color="gray"   
-              data-fg-color="gray"  
+              data-fg-color="white"  
             >
               back-end.
             </span>
@@ -113,3 +117,6 @@ const About = () => {
 };
 
 export default About;
+
+
+
