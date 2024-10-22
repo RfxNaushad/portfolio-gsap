@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -12,7 +12,8 @@ import TextEffects from "../components/TextEffects";
 
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
-
+ 
+    
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
