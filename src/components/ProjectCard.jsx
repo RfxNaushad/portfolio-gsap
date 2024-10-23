@@ -28,8 +28,8 @@ export default function ProjectCard({ project, isWide }) {
       });
 
       gsap.to(textRef.current, {
-        y: e.movementY <0 ? -2 : 2,
-        x: e.movementX < 0 ? -2 : 2
+        y: e.movementY <0 ? -1 : 3,
+        x: e.movementX < 0 ? -3 : 3
       })
 
       // Clear any previous timeout to reset text position

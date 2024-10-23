@@ -109,6 +109,7 @@ function MainPage() {
             <ProjectShowcase />
             {/* <ProjectsShowcase/> */}
             <Footer />
+            
 
         </div>
     );

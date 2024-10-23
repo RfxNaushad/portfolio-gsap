@@ -63,49 +63,7 @@ const projects = [
     },
 ];
 
-// const ProjectCard = ({ project, isWide }) => (
-   
-   
-    
-//     <div
-//         className={`flex relative flex-col justify-end w-full h-[30.3rem] object-cover  rounded-3xl overflow-hidden ${
-//             isWide ? "col-span-7" : "col-span-5"
-//         } bg-cover  bg-no-repeat `}
-//         style={{ backgroundImage: `url(${project.image})` }}
-//     >
-//         {/* <div className="absolute inset-0 bg-black bg-opacity-90"></div> */}
-//         {/* <img
-//             src={project.image}
-//             alt={project.title}
-//             className="w-full h-64 object-cover"
-//         /> */}
-//         <div className="flex items-center gap-4 p-6 ">
-//             <button className="bg-white text-black px-4 py-2 rounded-full flex items-center text-sm font-medium">
-//                 View Project <ArrowUpRight className="ml-2 w-4 h-4" />
-//             </button>
-//             <button className="bg-green-400 p-2 rounded-full">
-//                 <Github className="w-5 h-5 text-black" />
-//             </button>
-//         </div>
 
-//         <div className="p-6 bg-black opacity-90 ">
-//             <h3 className="text-white text-2xl font-bold mb-4">
-//                 {project.title}
-//             </h3>
-//             <div className="w-8/12 flex flex-wrap gap-2 mb-6">
-//                 {project.technologies.map((tech, index) => (
-//                     <span
-//                         key={index}
-//                         className="border-2 border-gray-700 text-gray-300 text-xs px-3 py-2 rounded-full"
-//                     >
-//                         {tech}
-//                     </span>
-//                 ))}
-//             </div>
-//         </div>
-
-//     </div>
-// );
 
 const FilterButton = ({ label, isActive, onClick }) => (
     <button
