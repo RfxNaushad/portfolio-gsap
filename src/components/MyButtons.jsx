@@ -55,6 +55,9 @@ const MyButtons = () => {
                 <div
                     className={`absolute top-[-50%] left-[-25%] w-[150%] h-[200%] bg-blue-600 rounded-full transition-transform duration-500 ease-in-out ${isHovered1 ? 'translate-y-0' : 'translate-y-[76%]'}`}
                 ></div>
+                <div
+                    className={`absolute top-[-50%] left-[-25%] w-[150%] h-[200%] bg-blue-600 rounded-full transition-transform duration-500 ease-in-out ${isHovered1 ? 'translate-y-0' : 'translate-y-[76%]'}`}
+                ></div>
                 <span className="relative z-10">Write a Message</span>
             </button>
 

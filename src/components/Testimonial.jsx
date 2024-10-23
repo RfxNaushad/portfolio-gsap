@@ -4,7 +4,6 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
-import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -225,17 +224,6 @@ export default function Testimonial() {
 
     //    current version
     useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1,
-            easing: (t) => t,
-        });
-        
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        
-        requestAnimationFrame(raf);
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.author',
@@ -295,7 +283,6 @@ export default function Testimonial() {
     
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-            lenis.destroy();
         };
     }, []);
     
