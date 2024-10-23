@@ -19,13 +19,13 @@ import TextMarquee from "../components/TextMarquee";
 
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
-    const cardData = [
-        { image: "1 2 3" },
-        { image: "3" },
-        { image: "path/to/image3.jpg" },
-        { image: "path/to/image4.jpg" },
-        { image: "path/to/image5.jpg" },
-      ];
+    // const cardData = [
+    //     { image: "1 2 3" },
+    //     { image: "3" },
+    //     { image: "path/to/image3.jpg" },
+    //     { image: "path/to/image4.jpg" },
+    //     { image: "path/to/image5.jpg" },
+    //   ];
     
     const toggleMenu = () => {
         setIsOpen(!isOpen);

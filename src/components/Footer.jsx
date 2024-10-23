@@ -1,5 +1,4 @@
-import gsap from "gsap";
-import { useEffect } from "react";
+import MyButtons from "./MyButtons";
 
 /* eslint-disable react/prop-types */
 const SocialLink = ({ platform, username, icon }) => (
@@ -16,7 +15,6 @@ const SocialLink = ({ platform, username, icon }) => (
 
 export default function Footer() {
 
-
     return (
         <footer className="bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-[1120px] mx-auto">
@@ -26,31 +24,7 @@ export default function Footer() {
                 <h3 className="text-4xl sm:text-5xl font-bold text-center mb-12 max-w-3xl mx-auto leading-tight">
                     Ready to Bring Your Ideas to Life?
                 </h3>
-                {/* <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <button className="border border-gray-400 bg-transparent from-gray-800 to-gray-900 text-white px-8 py-3 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 text-sm font-medium">
-                        Write a Message
-                    </button>
-                    <button className="border border-gray-400 bg-transparent text-white px-8 py-3 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 text-sm font-medium">
-                        Discuss Project
-                    </button>
-                </div> */}
-
-                <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-      <button className="button-with-animation border border-gray-400 bg-transparent text-white px-8 py-3 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 text-sm font-medium relative overflow-hidden">
-        <svg width="500" height="200" className="absolute inset-0 pointer-events-none">
-          <path d="M 10 100 Q 250 100 490 100" stroke="white" fill="transparent" />
-        </svg>
-        Write a Message
-      </button>
-
-      <button className="button-with-animation border border-gray-400 bg-transparent text-white px-8 py-3 rounded-full hover:from-gray-700 hover:to-gray-800 transition-all duration-300 text-sm font-medium relative overflow-hidden">
-        <svg width="500" height="200" className="absolute inset-0 pointer-events-none">
-          <path d="M 10 100 Q 250 100 490 100" stroke="white" fill="transparent" />
-        </svg>
-        Discuss Project
-      </button>
-    </div>
-
+                <MyButtons />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="border-t border-gray-800 pt-8">
                         <SocialLink
