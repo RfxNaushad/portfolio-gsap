@@ -6,16 +6,18 @@ import { useGSAP } from "@gsap/react";
 
 export default function ProjectCard({ project, isWide }) {
   const [hovered, setHovered] = useState(false);
+  const timeoutRef = useRef(null);
   const cursorRef = useRef(null);
   const cardRef = useRef(null);
+  const textRef = useRef(null);
 
   useGSAP(() => {
     const handleMouseMove = (e) => {
       const rect = cardRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top ;
-     
-      
+      const y = e.clientY - rect.top;
+
+      console.log(e);
 
       // Move the mask smoothly with cursor
       gsap.to(cursorRef.current, {
@@ -24,8 +26,27 @@ export default function ProjectCard({ project, isWide }) {
         duration: 0.5,
         ease: "power3.out",
       });
-    };
 
+      gsap.to(textRef.current, {
+        y: e.movementY <0 ? -2 : 2,
+        x: e.movementX < 0 ? -2 : 2
+      })
+
+      // Clear any previous timeout to reset text position
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      // Set timeout to return text to original position after a short delay
+      timeoutRef.current = setTimeout(() => {
+        gsap.to(textRef.current, {
+          x: 0,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }, 200);
+    };
     if (hovered) {
       cardRef.current.addEventListener("mousemove", handleMouseMove);
     } else {
@@ -44,7 +65,7 @@ export default function ProjectCard({ project, isWide }) {
     // Show the mask with fromTo animation on hover
     gsap.fromTo(
       cursorRef.current,
-      { opacity: 0, scale: 0, }, // Initially hidden and scaled down
+      { opacity: 0, scale: 0 }, // Initially hidden and scaled down
       { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" } // Visible and smoothly scaling in
     );
   };
@@ -99,9 +120,13 @@ export default function ProjectCard({ project, isWide }) {
         className="absolute -top-14 -left-11 w-24 h-24 bg-[#00e676] rounded-full pointer-events-none flex items-center justify-center"
         style={{ opacity: 0, transform: "scale(0)" }} // Hidden by default
       >
-        <span className="text-lg absolute font-bold text-white">View</span>
+        <span
+          ref={textRef}
+          className="text-lg  absolute left-7 top-8 font-bold text-white"
+        >
+          View
+        </span>
       </div>
     </div>
   );
 }
-

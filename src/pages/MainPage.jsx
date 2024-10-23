@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -14,9 +14,18 @@ import TextMarquee from "../components/TextMarquee";
 
 
 
+
+
+
 function MainPage() {
     const [isOpen, setIsOpen] = useState(false);
- 
+    const cardData = [
+        { image: "1 2 3" },
+        { image: "3" },
+        { image: "path/to/image3.jpg" },
+        { image: "path/to/image4.jpg" },
+        { image: "path/to/image5.jpg" },
+      ];
     
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -98,6 +107,7 @@ function MainPage() {
             <WorkExperience />
             <Testimonial />
             <ProjectShowcase />
+            {/* <ProjectsShowcase/> */}
             <Footer />
 
         </div>

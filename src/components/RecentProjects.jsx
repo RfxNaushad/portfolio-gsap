@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { ArrowUpRight, Github } from "lucide-react";
-import { useRef, useState } from "react";
-import Cursor from "./Cursor";
 
+
+import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 
 const projects = [
