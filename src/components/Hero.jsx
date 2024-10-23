@@ -55,7 +55,7 @@ const Hero = () => {
 
     return (
         <div
-            className="flex flex-col items-center justify-start h-screen relative bg-black text-white py-20"
+            className="flex flex-col items-center justify-start  relative bg-black text-white py-20"
             style={{
                 backgroundImage: `url(${bgImage})`,
                 backgroundSize: "contain",
@@ -138,7 +138,7 @@ const Hero = () => {
             </div>
         </div> */}
 
-        <div className="flex flex-col justify-center gap-[50px] overflow-hidden -mt-32 z-10">
+    {/* <div className="flex flex-col justify-center gap-[50px] overflow-hidden -mt-32 z-10">
       <div
         className="marquee whitespace-nowrap"
         data-marquee-duration="35"
@@ -150,7 +150,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
 
     </div>
     );
