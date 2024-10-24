@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Elastic, gsap } from 'gsap';
+import { FaDownload, FaGithub, FaLinkedin } from "react-icons/fa";
 import download from "../assets/icon/download.png";
 import down from "../assets/icon/lower-arrow.png";
 import bgImage from "../assets/images/hero-bg.png";
@@ -12,45 +12,79 @@ import "../App.css";
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 const Hero = () => {
-    // const marqueeRef = useRef(null);
-
-    // useEffect(() => {
-    //   const marquee = marqueeRef.current;
-    //   const width = marquee.scrollWidth / 2; // Get the width of the marquee content
-  
-    //   gsap.to(marquee, {
-    //     x: `-${width}px`, // Move left by the width of the container
-    //     duration: 10, // Adjust for speed
-    //     repeat: -1, // Infinite looping
-    //     ease: 'linear',
-    //     modifiers: {
-    //       x: (x) => `${parseFloat(x) % width}px`, // Wrap around once the content reaches the end
-    //     },
-    //   });
-    // }, []);
     const marqueeRefs = useRef([]);
+    const buttonRef1 = useRef(null);
+    const buttonRef2 = useRef(null);
+    const buttonRef3 = useRef(null);
+    const btnFillRef1 = useRef(null);
+    const btnFillRef2 = useRef(null);
+    const btnFillRef3 = useRef(null);
+    const strength = 20;
 
-    useEffect(() => {
-      // Iterate over all marquee elements
-      marqueeRefs.current.forEach((item) => {
-        const marqueeInner = item.querySelector('.marquee__inner');
-        const marqueeContent = marqueeInner.querySelector('.marquee__content');
-  
-        // Duration from data attribute or default
-        const duration = item.getAttribute('data-marquee-duration') || 20;
-  
-        // Clone the content for a seamless animation
-        const marqueeContentClone = marqueeContent.cloneNode(true);
-        marqueeInner.appendChild(marqueeContentClone);
-  
-        // Animate the inner element containing both the original and cloned text
-        gsap.to(marqueeInner, {
-          x: `-${marqueeContent.offsetWidth}px`,
-          duration: duration,
-          ease: 'linear',
-          repeat: -1,
+    const animateBtnFill = (btnFillRef, translateY, duration) => {
+        const btnFill = btnFillRef.current;
+        if (btnFill) {
+            requestAnimationFrame(() => {
+                btnFill.animate(
+                    {
+                        transform: `translate(-50%, ${translateY}%)`,
+                    },
+                    { duration, fill: "forwards", easing: "ease" }
+                );
+            });
+        }
+    };
+
+    const handleMouseMove = (event, buttonRef) => {
+        const magnetButton = buttonRef.current;
+        const bounding = magnetButton.getBoundingClientRect();
+
+        gsap.to(magnetButton, {
+            duration: 1,
+            x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,
+            y: (((event.clientY - bounding.top) / magnetButton.offsetHeight) - 0.5) * strength,
+            ease: Elastic.easeOut.config(1, 0.3),
         });
-      });
+    };
+
+    const handleMouseLeave = (buttonRef) => {
+        gsap.to(buttonRef.current, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            ease: Elastic.easeOut.config(1, 0.3),
+        });
+    };
+
+    const handleMouseEnter = (btnFillRef) => {
+        animateBtnFill(btnFillRef, 50, 0);
+        animateBtnFill(btnFillRef, -50, 850);
+    };
+
+    const handleMouseLeaveBg = (btnFillRef) => {
+        animateBtnFill(btnFillRef, -150, 850);
+    };
+    useEffect(() => {
+        // Iterate over all marquee elements
+        marqueeRefs.current.forEach((item) => {
+            const marqueeInner = item.querySelector('.marquee__inner');
+            const marqueeContent = marqueeInner.querySelector('.marquee__content');
+
+            // Duration from data attribute or default
+            const duration = item.getAttribute('data-marquee-duration') || 20;
+
+            // Clone the content for a seamless animation
+            const marqueeContentClone = marqueeContent.cloneNode(true);
+            marqueeInner.appendChild(marqueeContentClone);
+
+            // Animate the inner element containing both the original and cloned text
+            gsap.to(marqueeInner, {
+                x: `-${marqueeContent.offsetWidth}px`,
+                duration: duration,
+                ease: 'linear',
+                repeat: -1,
+            });
+        });
     }, []);
 
     return (
@@ -74,31 +108,55 @@ const Hero = () => {
                     </p>
                     {/* Download CV Button and Icons */}
                     <div className="flex items-center space-x-4 mb-6">
-                        <a
-                            href="#"
-                            className="bg-[#ff9e14] flex gap-3 items-center text-[1rem] text-black font-semibold py-2.5 px-4 rounded-[1.5rem] shadow hover:bg-orange-400 transition duration-300"
+                        <button
+                            ref={buttonRef1}
+                            className="relative px-8 py-3 text-white text-sm font-medium border border-gray-400 rounded-full magnetic overflow-hidden"
+                            onMouseMove={(e) => handleMouseMove(e, buttonRef1)}
+                            onMouseLeave={() => {
+                                handleMouseLeave(buttonRef1);
+                                handleMouseLeaveBg(btnFillRef1);
+                            }}
+                            onMouseEnter={() => handleMouseEnter(btnFillRef1)}
                         >
-                            DOWNLOAD CV
-                            <img
-                                src={download}
-                                alt="Icon arrow"
-                                className="w-4 h-4"
-                            />
-                        </a>
+                            <div
+                                ref={btnFillRef1}
+                                className="absolute top-1/2 left-1/2 w-[150%] h-[200%] bg-[#ff9e14] rounded-[60%] transition-transform duration-500 ease-in-out translate-x-[-50%] translate-y-[50%]"
+                            ></div>
+                            <div className="relative z-10 flex items-center gap-3">Download CV <FaDownload /></div>
 
-                        <a
-                            href="#"
-                            className="bg-[#ff9e14] flex justify-center items-center text-black rounded-full p-2 transition duration-300 w-[2.5rem] h-[2.5rem]"
+                        </button>
+                        <button
+                            ref={buttonRef2}
+                            className="relative flex justify-center items-center text-white rounded-full p-2 transition duration-300 w-[2.5rem] h-[2.5rem] magnetic overflow-hidden border "
+                            onMouseMove={(e) => handleMouseMove(e, buttonRef2)}
+                            onMouseLeave={() => {
+                                handleMouseLeave(buttonRef2);
+                                handleMouseLeaveBg(btnFillRef2);
+                            }}
+                            onMouseEnter={() => handleMouseEnter(btnFillRef2)}
                         >
-                            <FaLinkedin className="w-4 h-4" />
-                        </a>
-
-                        <a
-                            href="#"
-                            className="bg-[#ff9e14] flex justify-center items-center text-black rounded-full p-2 transition duration-300 w-[2.5rem] h-[2.5rem]"
+                            <div
+                                ref={btnFillRef2}
+                                className="absolute top-1/2 left-1/2 w-[150%] h-[200%] bg-[#ff9e14] rounded-[60%] transition-transform duration-500 ease-in-out translate-x-[-50%] translate-y-[50%]"
+                            ></div>
+                            <FaLinkedin className="w-4 h-4 text-white z-10" />
+                        </button>
+                        <button
+                            ref={buttonRef3}
+                            className="relative flex justify-center items-center text-white rounded-full p-2 transition duration-300 w-[2.5rem] h-[2.5rem] magnetic overflow-hidden border "
+                            onMouseMove={(e) => handleMouseMove(e, buttonRef3)}
+                            onMouseLeave={() => {
+                                handleMouseLeave(buttonRef3);
+                                handleMouseLeaveBg(btnFillRef3);
+                            }}
+                            onMouseEnter={() => handleMouseEnter(btnFillRef3)}
                         >
-                            <FaGithub className="w-4 h-4" />
-                        </a>
+                            <div
+                                ref={btnFillRef3}
+                                className="absolute top-1/2 left-1/2 w-[150%] h-[200%] bg-[#ff9e14] rounded-[60%] transition-transform duration-500 ease-in-out translate-x-[-50%] translate-y-[50%]"
+                            ></div>
+                            <FaGithub className="w-4 h-4 text-white z-10" />
+                        </button>
                     </div>
                 </div>
 
@@ -131,14 +189,14 @@ const Hero = () => {
                     </div>
                 </div>
             </div> */}
-        {/* <div className="overflow-hidden relative w-full">
+            {/* <div className="overflow-hidden relative w-full">
            <div ref={marqueeRef} className="flex whitespace-nowrap">
               <h1 className="hero-name text-[12vw] text-center font-semibold leading-none"> Abdullah Al Akib </h1> 
               <h1 className="hero-name text-[12vw] text-center font-semibold leading-none"> Abdullah Al Akib </h1>
             </div>
         </div> */}
 
-    {/* <div className="flex flex-col justify-center gap-[50px] overflow-hidden -mt-32 z-10">
+            {/* <div className="flex flex-col justify-center gap-[50px] overflow-hidden -mt-32 z-10">
       <div
         className="marquee whitespace-nowrap"
         data-marquee-duration="35"
@@ -152,7 +210,7 @@ const Hero = () => {
       </div>
     </div> */}
 
-    </div>
+        </div>
     );
 };
 

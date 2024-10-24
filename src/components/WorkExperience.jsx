@@ -39,7 +39,7 @@ const WorkExperience = () => {
                 <p className="text-sm uppercase tracking-wider mb-4 text-center">
                     Work Experience
                 </p>
-                <h1 className="text-5xl font-bold mb-12 text-center py-10">
+                <h1 className="md:text-4xl lg:text-5xl font-bold mb-12 text-center py-10">
                     Where I Gained Expertise
                     <br />&{" "}
                     <span className="text-green-400">Grew My Skills</span>
@@ -47,14 +47,14 @@ const WorkExperience = () => {
 
                 {experiences.map((exp, index) => (
                     <div key={index} className="mb-8">
-                        <div className="flex justify-between px-7">
-                            <div className="w-1/2 pr-4">
+                        <div className="flex flex-col md:flex-row gap-5 md:gap-0 justify-between px-7">
+                            <div className="w-full md:w-1/2 pr-0 md:pr-4">
                                 <h2 className="text-2xl font-bold">
                                     {exp.company}
                                 </h2>
                                 <p className="text-gray-500">{exp.period}</p>
                             </div>
-                            <div className="w-1/2 pl-4">
+                            <div className="md:w-1/2 pl-0 md:pl-4">
                                 <h3 className="text-xl font-semibold mb-2">
                                     {exp.role}
                                 </h3>

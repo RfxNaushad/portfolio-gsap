@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import About from "../components/About";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -8,6 +8,7 @@ import Testimonial from "../components/Testimonial";
 import WhatIDo from "../components/WhatIDo";
 import WorkExperience from "../components/WorkExperience";
 import TextMarquee from "../components/TextMarquee";
+import gsap, { Elastic } from "gsap";
 
 
 function MainPage() {
@@ -16,7 +17,53 @@ function MainPage() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    const buttonRef1 = useRef(null);
+    const btnFillRef1 = useRef(null);
+    const strength = 20;
 
+    const animateBtnFill = (btnFillRef, translateY, duration) => {
+        const btnFill = btnFillRef.current;
+        if (btnFill) {
+            requestAnimationFrame(() => {
+                btnFill.animate(
+                    {
+                        transform: `translate(-50%, ${translateY}%)`,
+                    },
+                    { duration, fill: "forwards", easing: "ease" }
+                );
+            });
+        }
+    };
+
+    const handleMouseMove = (event, buttonRef) => {
+        const magnetButton = buttonRef.current;
+        const bounding = magnetButton.getBoundingClientRect();
+
+        gsap.to(magnetButton, {
+            duration: 1,
+            x: (((event.clientX - bounding.left) / magnetButton.offsetWidth) - 0.5) * strength,
+            y: (((event.clientY - bounding.top) / magnetButton.offsetHeight) - 0.5) * strength,
+            ease: Elastic.easeOut.config(1, 0.3),
+        });
+    };
+
+    const handleMouseLeave = (buttonRef) => {
+        gsap.to(buttonRef.current, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            ease: Elastic.easeOut.config(1, 0.3),
+        });
+    };
+
+    const handleMouseEnter = (btnFillRef) => {
+        animateBtnFill(btnFillRef, 50, 0);
+        animateBtnFill(btnFillRef, -50, 850);
+    };
+
+    const handleMouseLeaveBg = (btnFillRef) => {
+        animateBtnFill(btnFillRef, -150, 850);
+    };
     return (
         <div className="main-section ">
             {/* Navbar */}
@@ -33,13 +80,22 @@ function MainPage() {
                     <a href="#about" className="hover:text-gray-400 text-sm">
                         About
                     </a>
-                    <a
-                        href="#contact"
-                        className="bg-transparent border border-white rounded-3xl 
-                    px-4 py-2 hover:bg-white hover:text-black transition duration-300 text-base font-semibold"
+                    <button
+                        ref={buttonRef1}
+                        className="relative px-6 py-2 text-white hover:text-black text-sm font-medium border border-gray-400 rounded-full magnetic overflow-hidden"
+                        onMouseMove={(e) => handleMouseMove(e, buttonRef1)}
+                        onMouseLeave={() => {
+                            handleMouseLeave(buttonRef1);
+                            handleMouseLeaveBg(btnFillRef1);
+                        }}
+                        onMouseEnter={() => handleMouseEnter(btnFillRef1)}
                     >
-                        Contact
-                    </a>
+                        <div
+                            ref={btnFillRef1}
+                            className="absolute top-1/2 left-1/2 w-[150%] h-[200%] bg-white rounded-[60%] transition-transform duration-500 ease-in-out translate-x-[-50%] translate-y-[50%]"
+                        ></div>
+                        <span className="relative z-10">Contact</span>
+                    </button>
                 </div>
 
                 <button

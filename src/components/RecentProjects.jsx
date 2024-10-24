@@ -88,7 +88,7 @@ export default function ProjectShowcase() {
     return (
         <div className="bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-[1120px] mx-auto">
-                <div className="flex space-x-4 mb-12">
+                <div className="flex space-x-4 mb-12 overflow-x-auto">
                     {["All", "Laravel", "React JS", "Wordpress"].map(
                         (category) => (
                             <FilterButton
@@ -101,7 +101,7 @@ export default function ProjectShowcase() {
                         )
                     )}
                 </div>
-                <div className="grid grid-cols-12  gap-8 mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12  gap-8 mb-12">
                     {filteredProjects
                         .slice(0, visibleProjects)
                         .map((project, index) => (

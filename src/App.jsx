@@ -1,9 +1,12 @@
+import LenisWrapper from "./components/LenisWraper";
 import MainPage from "./pages/MainPage";
 
 function App() {
     return (
         <div>
-            <MainPage />
+            <LenisWrapper>
+                <MainPage />
+            </LenisWrapper>
         </div>
     );
 }

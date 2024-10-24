@@ -16,9 +16,6 @@ export default function ProjectCard({ project, isWide }) {
       const rect = cardRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-
-      console.log(e);
-
       // Move the mask smoothly with cursor
       gsap.to(cursorRef.current, {
         x: x,
@@ -102,7 +99,7 @@ export default function ProjectCard({ project, isWide }) {
 
       <div className="p-6 bg-black opacity-90 ">
         <h3 className="text-white text-2xl font-bold mb-4">{project.title}</h3>
-        <div className="w-8/12 flex flex-wrap gap-2 mb-6">
+        <div className="w-full lg:w-8/12 flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech, index) => (
             <span
               key={index}

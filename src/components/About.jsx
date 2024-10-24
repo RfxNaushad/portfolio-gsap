@@ -16,13 +16,12 @@ const About = () => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".text-effects",
-        start: "top 80%",
-        end: "top 20%",
+        start: "top 50%",
+        end: "top top",
         scrub: true,
-        markers: false,
+        // markers: true,
       }
     });
-
     // Select all reveal-type elements
     const splitTypes = document.querySelectorAll(".reveal-type");
 
@@ -36,31 +35,16 @@ const About = () => {
       // Hard color reveal with no easing and short duration
       timeline.fromTo(
         text.chars,  // Target individual characters
-        { color: bg }, // Starting color
+        { color: bg }, 
         {
-          color: fg, // Final color
-          duration: 0.1, // Short duration for a sharp change
-          stagger: 0.05, // Stagger for one-by-one effect
-          ease: "none",  // No easing for a hard transition
+          color: fg,
+          duration: 0.5, 
+          stagger: 0.05, 
+          ease: "none", 
         },
-        "+=0.01" // Delay between animations
+        "+=0.01" 
       );
     });
-
-    // Smooth scrolling using Lenis
-    const lenis = new Lenis();
-
-    lenis.on("scroll", (e) => {
-      console.log(e);
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
     // Clean up GSAP ScrollTrigger on unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -75,7 +59,7 @@ const About = () => {
         </p>
 
         <div className="text-effects">
-          <h1 className="text text-4xl md:text-[4.25rem] font-bold leading-tight">
+          <h1 className="text text-4xl md:text-[4.5rem] leading-[64px] font-bold">
 
             <span
               className="reveal-type"
