@@ -61,8 +61,8 @@ const Card = ({ title, image, isActive }) => {
         // Show the mask with fromTo animation on hover
         gsap.fromTo(
             cursorRef.current,
-            { opacity: 0, scale: 0 }, // Initially hidden and scaled down
-            { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" } // Visible and smoothly scaling in
+            { opacity: 0, scale: 0 },
+            { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" } 
         );
     };
 

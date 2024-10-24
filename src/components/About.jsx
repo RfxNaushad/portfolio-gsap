@@ -1,10 +1,9 @@
 
 import '../App.css'
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import SplitType from "split-type";
-import Lenis from "@studio-freight/lenis";
 
 import "../App.css";
 
@@ -26,23 +25,22 @@ const About = () => {
     const splitTypes = document.querySelectorAll(".reveal-type");
 
     splitTypes.forEach((char) => {
-      const bg = char.dataset.bgColor; // Background color (initial)
-      const fg = char.dataset.fgColor; // Foreground color (final)
-
+      const bg = char.dataset.bgColor;
+      const fg = char.dataset.fgColor;
       // Use SplitType to split the text into individual characters
       const text = new SplitType(char, { types: "chars" });
 
       // Hard color reveal with no easing and short duration
       timeline.fromTo(
-        text.chars,  // Target individual characters
-        { color: bg }, 
+        text.chars,
+        { color: bg },
         {
           color: fg,
-          duration: 0.5, 
-          stagger: 0.05, 
-          ease: "none", 
+          duration: 0.5,
+          stagger: 0.05,
+          ease: "none",
         },
-        "+=0.01" 
+        "+=0.01"
       );
     });
     // Clean up GSAP ScrollTrigger on unmount
@@ -63,32 +61,32 @@ const About = () => {
 
             <span
               className="reveal-type"
-              data-bg-color="gray"  
-              data-fg-color="white"  
+              data-bg-color="gray"
+              data-fg-color="white"
             >
               I'm a{" "}
             </span>
 
             <span
               className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="#22C55E" 
+              data-bg-color="gray"
+              data-fg-color="#22C55E"
             >
               full-stack developer{" "}
             </span>
 
             <span
               className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="white"  
+              data-bg-color="gray"
+              data-fg-color="white"
             >
               focused on building quality and impactful digital solutions across front-end{" "} and{" "}
-            </span> 
+            </span>
 
             <span
               className="reveal-type"
-              data-bg-color="gray"   
-              data-fg-color="white"  
+              data-bg-color="gray"
+              data-fg-color="white"
             >
               back-end.
             </span>

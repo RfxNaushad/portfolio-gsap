@@ -23,7 +23,7 @@ function WhatWeDo() {
                     <div className="bg-[#484848] rounded-2xl p-6">
                         <div className="mb-4">
                             <img
-                                src="/code.png" // replace with the actual icon path
+                                src="/code.png" 
                                 alt="Frontend & Backend Development"
                                 className="w-10 h-10"
                             />

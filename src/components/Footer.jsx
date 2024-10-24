@@ -1,4 +1,4 @@
-import MyButtons from "./MyButtons";
+import Button from "./shared/Button";
 
 /* eslint-disable react/prop-types */
 const SocialLink = ({ platform, username, icon }) => (
@@ -24,7 +24,10 @@ export default function Footer() {
                 <h3 className="text-4xl sm:text-5xl font-bold text-center mb-12 max-w-3xl mx-auto leading-tight">
                     Ready to Bring Your Ideas to Life?
                 </h3>
-                <MyButtons />
+                <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                    <Button text={"Write a Message"} />
+                    <Button text={"Discuss Project"} />
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="border-t border-gray-800 pt-8">
                         <SocialLink

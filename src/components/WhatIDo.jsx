@@ -187,21 +187,21 @@ export default function WhatIDo() {
             // Set the initial opacity and position of each service card
             gsap.set(section, {
                 opacity: 0,
-                x: 100, // Start from the right
+                x: 100, 
             });
 
             // Create a staggered animation that triggers on scroll
             gsap.to(section, {
                 opacity: 1,
-                x: 0, // Move to original position
+                x: 0, 
                 duration: 0.5,
                 scrollTrigger: {
                     trigger: section,
                     start: "top 80%",
                     toggleActions: "play none none reverse",
-                    // markers: true,
+                  
                 },
-                delay: index * 0.2, // Stagger the animations by 0.2 seconds
+                delay: index * 0.2,
             });
         });
 
